@@ -9,6 +9,8 @@ body {
     /* background-color: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  Chrome 10-25, Safari 5.1-6 */
     /* background-color: linear-gradient(to right, #FFFFFF, #ECE9E6); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
     background-image: url(../assets/ms-bg.svg);
+    
+    
 
     display: block !important;
   }
@@ -18,6 +20,8 @@ body {
     height: 100%;
     width: 100%;
     margin-top: 236px;
+    vertical-align: middle;
+    position: fixed;
 
 }
 
@@ -35,6 +39,12 @@ body {
     overflow: hidden;
     vertical-align: middle;
     margin-bottom: 20px;
+}
+
+.marchine{
+    position: absolute;
+    top: -14px;
+    color: #0067b8;
 }
 
 .logo {

